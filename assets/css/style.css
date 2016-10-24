@@ -1,0 +1,110 @@
+*{
+	margin: 0;
+	padding: 0;
+    font-family: 'Exo-Regular';
+}
+html,body {
+    overflow: hidden;
+}
+
+@font-face{
+   font-family: 'Exo-Regular';
+   src: url("../fonts/Exo-Regular.otf");
+}
+
+.bk-overlay {
+    background-color: rgba(60, 60, 60, 0.58);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+}
+
+.modal-wrapper {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    width: 40%;
+    height: auto;
+    z-index: 2;
+    font-family: 'Exo-Regular';
+    padding-bottom: 20px;
+}
+
+.modal-wrapper .title {
+    background-color: #dedede;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.modal-content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.modal-content input {
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+    border: 1px hidden;
+    border-bottom: 2px solid;
+    outline: none;
+    padding: 10px;
+}
+
+.button {
+	width: 200px !important;
+	border: 2px solid !important;
+	margin: 0 auto;
+}
+
+.header {
+    padding: 25px 0;
+    background-color: #989898;
+    color: #fff;
+    text-align: right;
+    padding-right: 30px;
+
+}
+.side-nav-wrapper {
+    width: 150px;
+    height: 100%;
+    background-color: #484848;
+    color: #fff;
+    text-align: center;
+    padding-top: 50px;
+    position: absolute;
+}
+
+.list-container {
+    padding-top: 200px;
+}
+
+.add-key {
+    float: right;
+    width: 100%;
+    overflow: hidden;
+    text-align: right;
+    margin-bottom: 22px;
+}
+
+.keys-container {
+    padding-top: 100px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.table-container table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.table-container table, th, td {
+    border: 1px solid #000;
+    text-align: center;
+    padding: 10px;
+}
