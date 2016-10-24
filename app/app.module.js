@@ -1,1 +1,1 @@
-var app = angular.module('keyManagementApp',[]);
+var app = angular.module('keyManagementApp',["ngTable"]);
