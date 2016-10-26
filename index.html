@@ -1,10 +1,14 @@
 <!doctype html>
-<html ng-app="keyManagementApp" ng-controller="indexController as vm">
+<html ng-app="keyMS" ng-controller="indexController as indexCtrl">
   <head>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="node_modules/ng-table/bundles/ng-table.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="node_modules/jquery-ui/themes/base/datepicker.css"> -->
   </head>
+
   <body>
+
   <div class="main-wrapper">
     <header class="header">
       <h1>KEY MANAGEMENT</h1>
@@ -15,18 +19,32 @@
       </ul>
     </div>
     <div class="keys-container">
-      <a href="" class="add-key" ng-click="vm.openPopup()">Add key</a>
-      <keys class="table-container"></keys>
+      <p class="add-key">Add key</p>
+       <keys class="table-container"></keys>
     </div>
-    <popup title="Add key" ng-if="vm.isOpen" class="show-popup"></popup>
+    <popup class="show-popup" title="Test Title" ng-if="indexCtrl.keyMSService.getPopupData()"></popup> 
   </div>
+  
   </body>
+  
   <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+  <!-- <script type="text/javascript" src="node_modules/angular/ng-storage.min.js"></script> -->
   <script type="text/javascript" src="node_modules/ng-table/bundles/ng-table.min.js"></script>
-  <script type="text/javascript" src="app/app.module.js"></script>
-  <script type="text/javascript" src="app/app.routes.js"></script>
-  <script type="text/javascript" src="app/directives/popup-directive.js"></script>
-  <script type="text/javascript" src="app/directives/keys-directive.js"></script>
-  <script type="text/javascript" src="app/controllers/index-controller.js"></script>
+
+  <!-- <script type="text/javascript" src="node_modules/jquery-ui/ui/widgets/datepicker.js"></script> -->
+  <!-- <script type="text/javascript" src="app/app.routes.js"></script> -->
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="components/popup/popup-directive.js"></script>
+  <script type="text/javascript" src="components/popup/popup-controller.js"></script>
+  <script type="text/javascript" src="components/popup/index.js"></script>
+  <script type="text/javascript" src="components/keys/keys-directive.js"></script>
+  <script type="text/javascript" src="components/keys/keys-controller.js"></script>
+  <script type="text/javascript" src="components/keys/index.js"></script>
+  <script type="text/javascript" src="components/common.js"></script>
+  <!-- <script type="text/javascript" src="components/popup/popup-directive.js"></script> -->
+  <!-- <script type="text/javascript" src="app/directives/keys-directive.js"></script> -->
+  <!-- <script type="text/javascript" src="app/directives/validate.js"></script> -->
+  <!-- <script type="text/javascript" src="app/directives/date-picker.js"></script> -->
+  <script type="text/javascript" src="index-controller.js"></script>
 </html>

@@ -1,0 +1,14 @@
+<div class="bk-overlay"></div>
+<div class="modal-wrapper">
+	<div class="title">{{popupCtrl.title}}</div>
+	<div class="modal-content">
+		<form name="keyForm" ng-submit="popupCtrl.submitForm();">
+			<input type="text" placeholder="Description" ng-model="popupCtrl.newUserData.description" required="required" />
+			<input type="text" datepicker placeholder="Actives on" ng-model="popupCtrl.newUserData.activeon" required="required" />
+			<input type="text" datepicker placeholder="Expiry" ng-model="popupCtrl.newUserData.expiry" required="required" />
+			<input type="password" placeholder="Enter password" ng-model="popupCtrl.newUserData.password" required="required" />
+			<input type="password" placeholder="Re-enter password" ng-model="popupCtrl.newUserData.cnfrmpassword" valid-password-c required="required" />
+			<input class="button" type="submit" value="Submit">
+		</form>
+	</div>
+</div>

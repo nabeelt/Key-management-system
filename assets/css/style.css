@@ -53,6 +53,7 @@ html,body {
     border-bottom: 2px solid;
     outline: none;
     padding: 10px;
+    cursor: pointer;
 }
 
 .button {
@@ -107,4 +108,8 @@ html,body {
     border: 1px solid #000;
     text-align: center;
     padding: 10px;
+}
+
+.table-container .ng-table-pager {
+    padding-top: 30px;
 }
