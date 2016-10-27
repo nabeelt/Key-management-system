@@ -2,14 +2,11 @@
 
 'use strict'
 
-angular.module('keyMS.keys-controller',['keyMS.index-controller'])
+angular.module('keyMS.keys-controller',[])
 	.controller('keysController',function($scope, keyMSService){
 
-		$scope.keyMSService = keyMSService;
-
-  		$scope.$watchCollection('keyMSService.userData', function (newVal, oldVal) { 
-  			$scope.keyMSService.userData = newVal;
-  		});
+		var vm = this;
+		vm.userData = keyMSService.getUserData();
 	});
 
 })()

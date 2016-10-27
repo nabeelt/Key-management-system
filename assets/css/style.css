@@ -90,6 +90,7 @@ html,body {
     overflow: hidden;
     text-align: right;
     margin-bottom: 22px;
+    cursor: pointer;
 }
 
 .keys-container {

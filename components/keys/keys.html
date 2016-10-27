@@ -1,4 +1,4 @@
-
+<!-- 
 <table class="table">
   <tr>
     <th>a</th>
@@ -6,7 +6,7 @@
     <th>c</th>
     <th>v</th>
   </tr>
-  <tr ng-repeat="data in keysCtrl.dataForTable">
+  <tr ng-repeat="data in keysCtrl.tableData">
     <td>
 		{{data.activeon}}
 	</td>
@@ -19,5 +19,19 @@
   	<td>
   		{{data.expiry}}
 	</td>
+  </tr>
+</table>
+ -->
+<table ng-table="tableParams" class="table" show-filter="true">
+  <tr ng-repeat="data in keysCtrl.tableData">
+    <td title="'Key'" filter="{ Key: 'text'}">
+    	{{data.key}}</td>
+    <td title="'Description'" filter="{ description: 'text'}">
+      {{data.description}}</td>
+  	<td title="'Actives on'" filter="{ activeOn: 'text'}">
+      {{data.activeon}}</td>
+      <td title="'Expires on'" filter="{ expiresOn: 'text'}">
+      	{{data.expiry}}</td>
+      <td title="'Edit/Delete'"></td>
   </tr>
 </table>

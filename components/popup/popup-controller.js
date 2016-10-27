@@ -2,13 +2,21 @@
 
 'use strict'
 
-angular.module('keyMS.popup-controller', [])
-	.controller('popupController', function ($scope, keyMSService) {
+angular.module('keyMS.popup-controller', ['ngTable'])
+	.controller('popupController', function ($scope, keyMSService, NgTableParams) {
 		var vm = this;
 		vm.newUserData = {};
+
 		vm.submitForm = function(){
 			keyMSService.setUserData(vm.newUserData);
-			keyMSService.isPopUpVisible = false;
+			vm.closeModal();
+		}
+
+		vm.tableData = keyMSService.getUserData();
+		vm.tableParams = new NgTableParams({}, { dataset: vm.tableData});
+
+		vm.closeModal = function() {
+			keyMSService.isPopUpVisible = false
 		}
 	})
 })()

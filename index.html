@@ -19,7 +19,7 @@
       </ul>
     </div>
     <div class="keys-container">
-      <p class="add-key">Add key</p>
+      <p class="add-key" ng-click="indexCtrl.openPopup()">Add key</p>
        <keys class="table-container"></keys>
     </div>
     <popup class="show-popup" title="Test Title" ng-if="indexCtrl.keyMSService.getPopupData()"></popup> 
@@ -35,6 +35,7 @@
   <!-- <script type="text/javascript" src="node_modules/jquery-ui/ui/widgets/datepicker.js"></script> -->
   <!-- <script type="text/javascript" src="app/app.routes.js"></script> -->
   <script type="text/javascript" src="app.js"></script>
+  <!-- <script type="text/javascript" src="components/datepicker/date-picker.js"></script> -->
   <script type="text/javascript" src="components/popup/popup-directive.js"></script>
   <script type="text/javascript" src="components/popup/popup-controller.js"></script>
   <script type="text/javascript" src="components/popup/index.js"></script>
@@ -45,6 +46,5 @@
   <!-- <script type="text/javascript" src="components/popup/popup-directive.js"></script> -->
   <!-- <script type="text/javascript" src="app/directives/keys-directive.js"></script> -->
   <!-- <script type="text/javascript" src="app/directives/validate.js"></script> -->
-  <!-- <script type="text/javascript" src="app/directives/date-picker.js"></script> -->
   <script type="text/javascript" src="index-controller.js"></script>
 </html>
