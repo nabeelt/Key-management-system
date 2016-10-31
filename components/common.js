@@ -16,7 +16,7 @@ angular.module('keyMS.common-service',[])
     keyService.setUserData = function(data){
       var text = "";
       var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      for( var i=0; i < 5; i++ )
+      for( var i=0; i < 9; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
       
       data.key = text;

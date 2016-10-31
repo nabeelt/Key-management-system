@@ -54,6 +54,7 @@ html,body {
     outline: none;
     padding: 10px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .button {
@@ -113,4 +114,25 @@ html,body {
 
 .table-container .ng-table-pager {
     padding-top: 30px;
+}
+
+.validate {
+    color: red;
+    font-size: 12px;
+}
+
+.key-text {
+    font-weight: bolder;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
 }

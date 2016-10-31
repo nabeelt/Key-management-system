@@ -3,12 +3,20 @@
 	<div class="title">{{popupCtrl.title}}</div>
 	<div class="modal-content">
 		<form name="keyForm" ng-submit="popupCtrl.submitForm();">
-			<input type="text" placeholder="Description" ng-model="popupCtrl.newUserData.description" required="required" />
-			<input type="date" placeholder="Actives on" ng-model="popupCtrl.newUserData.activeon" required="required" />
-			<input type="date" placeholder="Expiry" ng-model="popupCtrl.newUserData.expiry" required="required" />
-			<input type="password" placeholder="Enter password" ng-model="popupCtrl.newUserData.password" required="required" />
-			<input type="password" placeholder="Re-enter password" ng-model="popupCtrl.newUserData.cnfrmpassword" valid-password-c required="required" />
-			<input class="button" type="submit" value="Submit">
+			<input name="description" type="text" placeholder="Description" ng-model="popupCtrl.newUserData.description" required="required" />
+			<datepicker date-format="yyyy/MM/dd">	
+				<input type="text" placeholder="Actives on" name="activedate" ng-model="popupCtrl.newUserData.activeon" required="required" />
+			</datepicker>
+			<div class="validate" ng-show="keyForm.activedate.$touched && keyForm.activedate.$invalid">Date is required.</div>
+			<datepicker date-format="yyyy/MM/dd" date-min-limit="popupCtrl.newUserData.activeon.toString()">
+				<input type="text" name="expirydate" placeholder="Expiry" ng-model="popupCtrl.newUserData.expiry" required="required" />
+			</datepicker>
+			<div class="validate" ng-show="keyForm.expirydate.$touched && keyForm.expirydate.$invalid">Date is required.</div>
+			<input type="password" name="password" placeholder="Enter password" ng-model="popupCtrl.newUserData.password" required="required" />
+			<div class="validate" ng-show="keyForm.password.$touched && keyForm.password.$invalid">password is required.</div>
+			<input type="password" name="cnfrmpassword" placeholder="Re-enter password" ng-model="popupCtrl.newUserData.cnfrmpassword" match = "popupCtrl.newUserData.password" required="required" />
+			<div class="validate" ng-show="keyForm.cnfrmpassword.$error.match">Fields do not match!</div>
+			<input class="button" type="submit" ng-disabled="keyForm.$invalid" value="Submit">
 		</form>
 	</div>
 </div>
