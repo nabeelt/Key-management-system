@@ -6,7 +6,7 @@ angular.module('keyMS.popup-controller', ['ngTable'])
 	.controller('popupController', function ($scope, keyMSService, NgTableParams) {
 		var vm = this;
 		vm.newUserData = {};
-		vm.color = "";
+		vm.keyMSService = keyMSService;
 
 		vm.submitForm = function(){
 			keyMSService.setUserData(vm.newUserData);
@@ -18,13 +18,18 @@ angular.module('keyMS.popup-controller', ['ngTable'])
 		vm.tableParams = new NgTableParams({}, { dataset: vm.tableData});
 
 		vm.closeModal = function() {
-			keyMSService.isPopUpVisible = false
+			keyMSService.isPopUpVisible = false;
+			keyMSService.isPassPopup = false;
 		}
 
 		vm.checkKeyStatus = function (data) {
 			var activeDate = data.activeon,
 					expiryDate = data.expiry; 
-			vm.color = vm.compareDates(expiryDate,activeDate);
+			vm.newUserData.color = vm.compareDates(expiryDate,activeDate);
+			if(vm.keyMSService.isEdit) {
+				vm.tableData[vm.keyMSService.index].color = vm.newUserData.color;
+				vm.keyMSService.isEdit = false;
+			}
 		}
 
 		vm.compareDates = function(expiry,active){
@@ -43,10 +48,7 @@ angular.module('keyMS.popup-controller', ['ngTable'])
 			var today = new Date(currDate).getTime()/1000;
 			var expiryDate = new Date(expiry).getTime()/1000;
 			var activeDate = new Date(active).getTime()/1000;
-			var keyText = angular.element( document.querySelector( '.key-text' ) );
 			if (today > activeDate && today < expiryDate) {
-				
-				keyText.addClass('green');
 				return 'green';
 			}
 
@@ -57,6 +59,40 @@ angular.module('keyMS.popup-controller', ['ngTable'])
 			if (today > expiryDate && today > activeDate) {
 				return 'red';
 			}
+		}
+
+		vm.submitPassForm = function() {
+			var index = vm.keyMSService.index;
+			if(vm.passwordPop === vm.tableData[index].password) {
+				
+				if(vm.keyMSService.isEdit === true){
+					vm.title = "Edit Key"
+					vm.keyMSService.isPassPopup = false;
+					vm.keyMSService.setPopupData();
+					vm.newUserData.description = vm.tableData[index].description;
+					vm.newUserData.activeon = vm.tableData[index].activeon;
+					vm.newUserData.expiry = vm.tableData[index].expiry;
+				} else {
+					vm.tableData.splice(index,1);
+				vm.keyMSService.isPassPopup = false;
+				vm.keyMSService.isPopUpVisible = false;
+				vm.passwordIncorrect = false;
+				}	
+			} else {
+				vm.passwordIncorrect = true;
+			}
+		}
+
+		vm.deleteRow = function(index) {
+			vm.keyMSService.setPopupData("passPopup");
+			vm.keyMSService.index = index;
+			vm.keyMSService.isEdit = false;
+		}
+
+		vm.editKey = function(index) {
+			vm.keyMSService.setPopupData("passPopup");
+			vm.keyMSService.index = index;
+			vm.keyMSService.isEdit = true;
 		}
 
 	})

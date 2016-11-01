@@ -1,13 +1,17 @@
-<table ng-table="tableParams" class="table" show-filter="true">
-  <tr ng-repeat="data in keysCtrl.tableData">
-    <td title="'Key'" filter="{ Key: 'text'}">
-    	<span class="key-text" ng-style="{'background-color': keysCtrl.color}">{{data.key}}</span></td>
-    <td title="'Description'" filter="{ description: 'text'}">
+<table ng-table="tableParams" class="table">
+  <tr ng-repeat="data in keysCtrl.tableData track by $index">
+    <td title="'Key'">
+    	<span class="key-text" ng-style="{'background-color': data.color}">{{data.key}}</span></td>
+    <td title="'Description'">
       {{data.description}}</td>
-  	<td title="'Actives on'" filter="{ activeOn: 'text'}">
+  	<td title="'Actives on'">
       {{data.activeon}}</td>
-      <td title="'Expires on'" filter="{ expiresOn: 'text'}">
+      <td title="'Expires on'">
       	{{data.expiry}}</td>
-      <td title="'Edit/Delete'"></td>
+      <td title="'Edit/Delete'">
+      	<span ng-click="keysCtrl.editKey($index)" ng-model="edit">Edit</span>
+      	<span>/</span>
+      	<span ng-click="keysCtrl.deleteRow($index)" ng-model="delete">Delete</span>
+      </td>
   </tr>
 </table>

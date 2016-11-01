@@ -1,8 +1,9 @@
 <div class="bk-overlay" ng-click="popupCtrl.closeModal()"></div>
 <div class="modal-wrapper">
-	<div class="title">{{popupCtrl.title}}</div>
+	<div ng-if="!popupCtrl.keyMSService.isPassPopup" class="title">{{popupCtrl.title}}</div>
+	<div ng-if="popupCtrl.keyMSService.isPassPopup" class="title">Enter Password</div>
 	<div class="modal-content">
-		<form name="keyForm" ng-submit="popupCtrl.submitForm();">
+		<form ng-if="!popupCtrl.keyMSService.isPassPopup" name="keyForm" ng-submit="popupCtrl.submitForm();">
 			<input name="description" type="text" placeholder="Description" ng-model="popupCtrl.newUserData.description" required="required" />
 			<datepicker date-format="yyyy/MM/dd">	
 				<input type="text" placeholder="Actives on" name="activedate" ng-model="popupCtrl.newUserData.activeon" required="required" />
@@ -17,6 +18,11 @@
 			<input type="password" name="cnfrmpassword" placeholder="Re-enter password" ng-model="popupCtrl.newUserData.cnfrmpassword" match = "popupCtrl.newUserData.password" required="required" />
 			<div class="validate" ng-show="keyForm.cnfrmpassword.$error.match">Fields do not match!</div>
 			<input class="button" type="submit" ng-disabled="keyForm.$invalid" value="Submit">
+		</form>
+		<form ng-if="popupCtrl.keyMSService.isPassPopup" name="passForm" ng-submit="popupCtrl.submitPassForm();">
+			<input type="password" placeholder="Please enter password" name="passwordPop" ng-model="popupCtrl.passwordPop" required="required" />
+			<div class="validate" ng-show="passForm.passwordPop.$touched && passForm.passwordPop.$invalid || popupCtrl.passwordIncorrect">incorrect password.</div>
+			<input class="button" type="submit" value="Submit">
 		</form>
 	</div>
 </div>
