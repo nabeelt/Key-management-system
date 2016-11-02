@@ -87,11 +87,13 @@ html,body {
 
 .add-key {
     float: right;
-    width: 100%;
     overflow: hidden;
     text-align: right;
     margin-bottom: 22px;
     cursor: pointer;
+    border: 1px solid grey;
+    background-color: #989898;
+    padding: 10px;
 }
 
 .keys-container {
