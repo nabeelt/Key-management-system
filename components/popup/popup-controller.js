@@ -2,8 +2,8 @@
 
 'use strict'
 
-angular.module('keyMS.popup-controller', ['ngTable'])
-	.controller('popupController', function ($scope, keyMSService, NgTableParams) {
+angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
+	.controller('popupController', function ($scope, keyMSService, NgTableParams,$localStorage) {
 		var vm = this;
 		vm.newUserData = {};
 		vm.keyMSService = keyMSService;

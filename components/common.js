@@ -2,8 +2,8 @@
 
 'use strict'
 
-angular.module('keyMS.common-service',[])
-  .service('keyMSService', function(){
+angular.module('keyMS.common-service',['ngStorage'])
+  .service('keyMSService', function($localStorage){
   	
     var keyService = {};
   	keyService.userData = [];
@@ -35,6 +35,7 @@ angular.module('keyMS.common-service',[])
       else {
         keyService.userData.push(data);
       }
+      $localStorage.tableData =  keyService.userData;
   	}
   	
     keyService.getPopupData = function(){
