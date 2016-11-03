@@ -15,7 +15,7 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 		}
 
 		vm.tableData = keyMSService.getUserData();
-		vm.tableParams = new NgTableParams({}, { dataset: vm.tableData});
+		vm.tableParams = new NgTableParams({sorting: { activeon: "desc" } }, { dataset: vm.tableData});
 
 		vm.closeModal = function() {
 			keyMSService.isPopUpVisible = false;
@@ -49,15 +49,15 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 			var expiryDate = new Date(expiry).getTime()/1000;
 			var activeDate = new Date(active).getTime()/1000;
 			if (today > activeDate && today < expiryDate) {
-				return 'green';
+				return 'rgb(43, 255, 18)';
 			}
 
 			if (today < activeDate && today < expiryDate){
-				return 'yellow';
+				return 'rgb(234, 249, 0)';
 			}
 
 			if (today > expiryDate && today > activeDate) {
-				return 'red';
+				return 'rgb(255, 66, 66)';
 			}
 		}
 

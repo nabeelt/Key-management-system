@@ -5,7 +5,7 @@
 angular.module('popup-module-directive',[])
   .component('popup', {
     bindings: {
-        title: "@",
+        title: "@"
     },
     controller: 'popupController',
     controllerAs: 'popupCtrl',

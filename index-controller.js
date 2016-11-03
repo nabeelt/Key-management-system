@@ -8,5 +8,8 @@ angular.module('keyMS.index-controller',[])
 		vm.openPopup = function() {
 			vm.keyMSService.setPopupData();
 		}
+		vm.makeSecondary = function() {
+			vm.keyMSService.isSecondary = true;
+		}
 	})
 })()

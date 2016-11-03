@@ -11,6 +11,8 @@ angular.module('keyMS.common-service',['ngStorage'])
     keyService.isPassPopup = false;
     keyService.index = "";
     keyService.isEdit ="";
+    keyService.count = 0;
+    keyService.isSecondary = false;
 
   	keyService.getUserData = function(){
       return keyService.userData;
@@ -35,6 +37,7 @@ angular.module('keyMS.common-service',['ngStorage'])
       else {
         keyService.userData.push(data);
       }
+      keyService.count = keyService.userData.length;
       $localStorage.tableData =  keyService.userData;
   	}
   	

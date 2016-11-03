@@ -9,7 +9,8 @@ angular.module('keyMS',[
 	'keyMS.index-controller',
 	'keyMS.common-service',
 	'720kb.datepicker',
-	'validation.match'
+	'validation.match',
+	'keyMS.router'
 	]);
 
 })()

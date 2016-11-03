@@ -5,22 +5,50 @@
     <link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="node_modules/ng-table/bundles/ng-table.min.css">
     <link rel="stylesheet" type="text/css" href="node_modules/angular-datepicker/angular-datepicker.css">
+    <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
   </head>
 
   <body>
 
   <div class="main-wrapper">
-    <header class="header">
+    <!-- <header class="header">
       <h1>KEY MANAGEMENT</h1>
-    </header>
+    </header> -->
     <div class="side-nav-wrapper">
-      <ul class="list-container">
-        <li>Primary key</li>
-      </ul>
+      <div class="heading">
+        <div class="logo"></div>
+        <h1>KEY MS</h1>
+      </div>
+      <p class="small-heading">Main</p>
+      <div class="menu">
+        <p class="menu-heading">System keys</p>
+        <ul class="menu-lists">
+          <li><a href="#primarykey">Primary key</a></li>
+          <li ng-click="indexCtrl.makeSecondary()"><a href="#secondarykey">Secondary key</a></li>
+        </ul>
+      </div>
+<!--     <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" heading="Keys+">
+      <div>Primary key</div>
+      <div>Secondary Key</div>
+    </div>
+  </uib-accordion> -->
+    </div>
+    <div class="header-nav">
+      <p>Dashboard</p>
+      <p ng-click="indexCtrl.openPopup()">Add new key +</p>
+    </div>
+    <div class="header-nav">
+      <p>Welcome to key Management System</p>
+      <p class="count">No. of Primary keys added - {{indexCtrl.keyMSService.count}}</p>
     </div>
     <div class="keys-container">
-      <p class="add-key" ng-click="indexCtrl.openPopup()">Add key+</p>
-       <keys class="table-container"></keys>
+      <div ng-view></div>
+      <!-- <div class="key-title">
+        <div class="logo-key">P</div>
+        <p>Primary key</p>
+      </div> -->
+        <!-- <p class="add-key" ng-click="indexCtrl.openPopup()">Add key+</p> -->
     </div>
     <popup class="show-popup" title="Add Key" ng-if="indexCtrl.keyMSService.getPopupData() || indexCtrl.keyMSService.isPassPopup"></popup> 
   </div>
@@ -33,6 +61,7 @@
   <script type="text/javascript" src="node_modules/angular-datepicker/angular-datepicker.js"></script>
   <script type="text/javascript" src="node_modules/angular-validation-match/angular-validation-match.js"></script>
   <script type="text/javascript" src="node_modules/angular/ng-storage.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
   <script type="text/javascript" src="app.js"></script>
   <script type="text/javascript" src="components/popup/popup-directive.js"></script>
   <script type="text/javascript" src="components/popup/popup-controller.js"></script>
@@ -40,5 +69,6 @@
   <script type="text/javascript" src="components/keys/keys-directive.js"></script>
   <script type="text/javascript" src="components/keys/index.js"></script>
   <script type="text/javascript" src="components/common.js"></script>
+  <script type="text/javascript" src="components/app.route.js"></script>
   <script type="text/javascript" src="index-controller.js"></script>
 </html>

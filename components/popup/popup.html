@@ -4,8 +4,12 @@
 	<div ng-if="popupCtrl.keyMSService.isPassPopup" class="title">Enter Password</div>
 	<div class="modal-content">
 		<form ng-if="!popupCtrl.keyMSService.isPassPopup" name="keyForm" ng-submit="popupCtrl.submitForm();">
-			<input name="description" type="text" placeholder="Description" ng-model="popupCtrl.newUserData.description" required="required" />
-			<div class="validate" ng-show="keyForm.description.$touched && keyForm.description.$invalid">Description is required.</div>
+			<select ng-if="popupCtrl.keyMSService.isSecondary">
+				<option>asdasdadds</option>
+				<option>asdasdasdad</option>
+			</select>
+			<input ng-if="!popupCtrl.keyMSService.isSecondary" name="description" type="text" placeholder="Description" ng-model="popupCtrl.newUserData.description" required="required" />
+			<div ng-if="!popupCtrl.keyMSService.isSecondary" class="validate" ng-show="keyForm.description.$touched && keyForm.description.$invalid">Description is required.</div>
 			<datepicker  date-format="yyyy/MM/dd">	
 				<input type="text" placeholder="Actives on" name="activedate" ng-model="popupCtrl.newUserData.activeon" readonly required="required" />
 			</datepicker>
