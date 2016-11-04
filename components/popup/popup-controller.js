@@ -3,10 +3,11 @@
 'use strict'
 
 angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
-	.controller('popupController', function ($scope, keyMSService, NgTableParams,$localStorage) {
+	.controller('popupController', function ($scope, keyMSService, NgTableParams,$localStorage,$routeParams) {
 		var vm = this;
 		vm.newUserData = {};
 		vm.keyMSService = keyMSService;
+		vm.isSecondary = parseInt($routeParams.ID);
 
 		vm.submitForm = function(){
 			keyMSService.setUserData(vm.newUserData);

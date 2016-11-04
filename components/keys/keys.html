@@ -1,17 +1,62 @@
-<table ng-table="tableParams" class="table">
+<div ng-if="!keysCtrl.isSecondary">
+  <table ng-table="tableParams" class="table">
+    <tr ng-repeat="data in keysCtrl.tableData track by $index">
+      <td title="'Key'">
+      	<span class="key-text" ng-style="{'background-color': data.color}">{{data.key}}</span></td>
+      <td title="'Description'">
+        {{data.description}}</td>
+    	<td title="'Actives on'">
+        {{data.activeon}}</td>
+        <td title="'Expires on'">
+        	{{data.expiry}}</td>
+        <td title="'Edit/Delete'">
+        	<span ng-click="keysCtrl.editKey($index)" ng-model="edit">Edit</span>
+        	<span>/</span>
+        	<span ng-click="keysCtrl.deleteRow($index)" ng-model="delete">Delete</span>
+        </td>
+    </tr>
+  </table>
+</div>
+
+<div ng-if="keysCtrl.isSecondary"  ng-repeat="data in keysCtrl.tableData track by $index">
+
+  Primary key : {{keysCtrl.tableData[$index].key}}
+  
+  <table ng-table="tableParams" class="table">
+    <tr ng-repeat="data in data.secondaryKey track by $index">
+      <td title="'Key'">
+        <span class="key-text" ng-style="{'background-color': data.color}">{{data.key}}</span></td>
+      <td title="'Description'">
+        {{data.description}}</td>
+      <td title="'Actives on'">
+        {{data.activeon}}</td>
+        <td title="'Expires on'">
+          {{data.expiry}}</td>
+        <td title="'Edit/Delete'">
+          <span ng-click="keysCtrl.editKey($index)" ng-model="edit">Edit</span>
+          <span>/</span>
+          <span ng-click="keysCtrl.deleteRow($index)" ng-model="delete">Delete</span>
+        </td>
+    </tr>
+  </table>
+</div>
+
+<!-- <table ng-if="keysCtrl.isSecondary" ng-table="tableParams" class="table">
   <tr ng-repeat="data in keysCtrl.tableData track by $index">
     <td title="'Key'">
-    	<span class="key-text" ng-style="{'background-color': data.color}">{{data.key}}</span></td>
+      <span class="key-text" ng-style="{'background-color': data.color}">{{data.key}}</span></td>
     <td title="'Description'">
       {{data.description}}</td>
-  	<td title="'Actives on'">
+    <td title="'Actives on'">
       {{data.activeon}}</td>
       <td title="'Expires on'">
-      	{{data.expiry}}</td>
+        {{data.expiry}}</td>
       <td title="'Edit/Delete'">
-      	<span ng-click="keysCtrl.editKey($index)" ng-model="edit">Edit</span>
-      	<span>/</span>
-      	<span ng-click="keysCtrl.deleteRow($index)" ng-model="delete">Delete</span>
+        <span ng-click="keysCtrl.editKey($index)" ng-model="edit">Edit</span>
+        <span>/</span>
+        <span ng-click="keysCtrl.deleteRow($index)" ng-model="delete">Delete</span>
       </td>
   </tr>
 </table>
+
+ -->

@@ -25,6 +25,7 @@ angular.module('keyMS.common-service',['ngStorage'])
         text += possible.charAt(Math.floor(Math.random() * possible.length));
       
       data.key = text;
+      
       if(keyService.isEdit){
          keyService.userData[keyService.index].key = data.key;
          keyService.userData[keyService.index].description = data.description;
@@ -35,10 +36,29 @@ angular.module('keyMS.common-service',['ngStorage'])
          keyService.userData[keyService.index].cnfrmpassword = data.cnfrmpassword;
       }
       else {
-        keyService.userData.push(data);
+        if(!data.primaryKey)
+          keyService.userData.push(data);
       }
+
       keyService.count = keyService.userData.length;
-      $localStorage.tableData =  keyService.userData;
+      
+      if(data.primaryKey){
+        angular.forEach(keyService.userData, function(value, index) {
+          if(value.key === data.primaryKey){
+            var secondaryKey = {
+              key : data.key,
+              description : data.description,
+              activeon : data.activeon,
+              color: data.color,
+              expiry : data.expiry,
+              password : data.password
+            }
+            if(!keyService.userData[index].secondaryKey)
+              keyService.userData[index].secondaryKey = [];
+            keyService.userData[index].secondaryKey.push(secondaryKey);
+          }
+        });   
+      }
   	}
   	
     keyService.getPopupData = function(){

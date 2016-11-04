@@ -4,9 +4,8 @@
 	<div ng-if="popupCtrl.keyMSService.isPassPopup" class="title">Enter Password</div>
 	<div class="modal-content">
 		<form ng-if="!popupCtrl.keyMSService.isPassPopup" name="keyForm" ng-submit="popupCtrl.submitForm();">
-			<select ng-if="popupCtrl.keyMSService.isSecondary">
-				<option>asdasdadds</option>
-				<option>asdasdasdad</option>
+			<select ng-if="popupCtrl.isSecondary" ng-model="popupCtrl.newUserData.primaryKey">
+				<option ng-repeat="key in popupCtrl.tableData">{{key.key}}</option>
 			</select>
 			<input ng-if="!popupCtrl.keyMSService.isSecondary" name="description" type="text" placeholder="Description" ng-model="popupCtrl.newUserData.description" required="required" />
 			<div ng-if="!popupCtrl.keyMSService.isSecondary" class="validate" ng-show="keyForm.description.$touched && keyForm.description.$invalid">Description is required.</div>
@@ -19,14 +18,14 @@
 			</datepicker>
 			<div class="validate" ng-show="keyForm.expirydate.$touched && keyForm.expirydate.$invalid">Date is required.</div>
 			<input type="password" name="password" placeholder="Enter password" ng-model="popupCtrl.newUserData.password" required="required" />
-			<div class="validate" ng-show="keyForm.password.$touched && keyForm.password.$invalid">password is required.</div>
+			<div class="validate" ng-show="keyForm.password.$touched && keyForm.password.$invalid">Password is required.</div>
 			<input type="password" name="cnfrmpassword" placeholder="Re-enter password" ng-model="popupCtrl.newUserData.cnfrmpassword" match = "popupCtrl.newUserData.password" required="required" />
 			<div class="validate" ng-show="keyForm.cnfrmpassword.$error.match">Fields do not match!</div>
 			<input class="button" type="submit" ng-disabled="keyForm.$invalid" value="Submit">
 		</form>
 		<form ng-if="popupCtrl.keyMSService.isPassPopup" name="passForm" ng-submit="popupCtrl.submitPassForm();">
 			<input type="password" placeholder="Please enter password" name="passwordPop" ng-model="popupCtrl.passwordPop" required="required" />
-			<div class="validate" ng-show="passForm.passwordPop.$touched && passForm.passwordPop.$invalid || popupCtrl.passwordIncorrect">incorrect password.</div>
+			<div class="validate" ng-show="passForm.passwordPop.$touched && passForm.passwordPop.$invalid || popupCtrl.passwordIncorrect">Incorrect password.</div>
 			<input class="button" type="submit" value="Submit">
 		</form>
 	</div>

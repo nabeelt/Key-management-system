@@ -255,6 +255,7 @@ html,body {
     width: 100%;
     margin: 0 auto;
     border-collapse: collapse;
+    padding-bottom: 50px;
 }
 
 .ng-table th {
