@@ -60,7 +60,6 @@ angular.module('keyMS.common-service',['ngStorage'])
       }
 
       if(keyService.isSecondaryEdit) {
-         // keyService.userData[keyService.index].secondaryKey[keyService.parentIndex].key = data.key;
          keyService.userData[keyService.parentIndex].secondaryKey[keyService.index].description = data.description;
          keyService.userData[keyService.parentIndex].secondaryKey[keyService.index].password = data.password;
       }

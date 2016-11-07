@@ -6,12 +6,8 @@ angular.module('keyMS.index-controller',[])
 		var vm = this;
 		vm.keyMSService = keyMSService;
 		vm.openPopup = function(param) {
-			// if(param === 'secondarykey') {
-			// 	vm.keyMSService.isSecondary = true;
-			// }else {
-			// 	vm.keyMSService.isSecondary = false;
-			// }
 			vm.keyMSService.setPopupData();
+			vm.keyMSService.isSecondaryEdit = false;
 		}
 	})
 })()
