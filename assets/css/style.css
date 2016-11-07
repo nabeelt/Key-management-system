@@ -290,3 +290,20 @@ html,body {
      background-color: #1590f9 !important; 
     text-shadow: 0 !important;
 }
+
+.primary-text {
+    padding: 15px 0;
+    font-size: 12px;
+    color: #6b6b6b;
+}
+.primary-text span{
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 7px;
+}
+
+.secondary-table-container {
+    padding-bottom: 30px;
+}

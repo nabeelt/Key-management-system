@@ -1,4 +1,5 @@
-<div ng-if="!keysCtrl.isSecondary">
+<div ng-if="!keysCtrl.tableData.length">No Data.</div>
+<div ng-if="!keysCtrl.isSecondary && keysCtrl.tableData.length">
   <table ng-table="tableParams" class="table">
     <tr ng-repeat="data in keysCtrl.tableData track by $index">
       <td title="'Key'">
@@ -10,22 +11,23 @@
         <td title="'Expires on'">
         	{{data.expiry}}</td>
         <td title="'Edit/Delete'">
-        	<span ng-click="keysCtrl.editKey($index)" ng-model="edit">Edit</span>
+        	<span ng-click="keysCtrl.editKey('',$index)" ng-model="edit">Edit</span>
         	<span>/</span>
-        	<span ng-click="keysCtrl.deleteRow($index)" ng-model="delete">Delete</span>
+        	<span ng-click="keysCtrl.deleteRow('',$index)" ng-model="delete">Delete</span>
         </td>
     </tr>
   </table>
 </div>
 
-<div ng-if="keysCtrl.isSecondary"  ng-repeat="data in keysCtrl.tableData track by $index">
+<div ng-if="keysCtrl.isSecondary"  ng-repeat="parentData in keysCtrl.tableData track by $index">
 
-  Primary key : {{keysCtrl.tableData[$index].key}}
-  
-  <table ng-table="tableParams" class="table">
-    <tr ng-repeat="data in data.secondaryKey track by $index">
+  <div ng-if="parentData.secondaryKey.length" class="secondary-table-container">
+  <div class="primary-text">
+     Primary key - <span ng-style="{'background-color': parentData.color}">{{keysCtrl.tableData[$index].key}}</span></div>
+  <table  ng-table="tableParams" class="table">
+    <tr ng-repeat="data in parentData.secondaryKey track by $index">
       <td title="'Key'">
-        <span class="key-text" ng-style="{'background-color': data.color}">{{data.key}}</span></td>
+        <span class="key-text" ng-style="{'background-color': parentData.color}">{{data.key}}</span></td>
       <td title="'Description'">
         {{data.description}}</td>
       <td title="'Actives on'">
@@ -33,12 +35,14 @@
         <td title="'Expires on'">
           {{data.expiry}}</td>
         <td title="'Edit/Delete'">
-          <span ng-click="keysCtrl.editKey($index)" ng-model="edit">Edit</span>
+          <span ng-click="keysCtrl.editKey($parent.$index,$index)" ng-model="editSecondary">Edit</span>
           <span>/</span>
-          <span ng-click="keysCtrl.deleteRow($index)" ng-model="delete">Delete</span>
+          <span ng-click="keysCtrl.deleteRow($parent.$index,$index)" ng-model="deleteSecondary">Delete</span>
         </td>
     </tr>
+
   </table>
+  </div>
 </div>
 
 <!-- <table ng-if="keysCtrl.isSecondary" ng-table="tableParams" class="table">

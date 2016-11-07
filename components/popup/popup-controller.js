@@ -60,41 +60,122 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 			if (today > expiryDate && today > activeDate) {
 				return 'rgb(255, 66, 66)';
 			}
+
+			if(today === activeDate && today < expiryDate){
+				return 'rgb(43, 255, 18)';
+			}
+
+			if(today === activeDate && today === expiryDate){
+				return 'rgb(43, 255, 18)';
+			}
+			if(today > activeDate && today === expiryDate){
+				return 'rgb(43, 255, 18)';
+			}
+
+
 		}
 
 		vm.submitPassForm = function() {
 			var index = vm.keyMSService.index;
-			if(vm.passwordPop === vm.tableData[index].password) {
-				
-				if(vm.keyMSService.isEdit === true){
+			var parentIndex = vm.keyMSService.parentIndex;
+			
+			//primary edit / delete
+			if(vm.keyMSService.isEdit === true){
+				if(vm.passwordPop === vm.tableData[index].password) {
 					vm.title = "Edit Key"
 					vm.keyMSService.isPassPopup = false;
 					vm.keyMSService.setPopupData();
 					vm.newUserData.description = vm.tableData[index].description;
 					vm.newUserData.activeon = vm.tableData[index].activeon;
 					vm.newUserData.expiry = vm.tableData[index].expiry;
-				} else {
+				}else {
+					vm.passwordIncorrect = true;
+				} 
+			} 
+
+			if(vm.keyMSService.isDelete === true){
+				if(vm.passwordPop === vm.tableData[index].password) {
 					vm.tableData.splice(index,1);
-				vm.keyMSService.isPassPopup = false;
-				vm.keyMSService.isPopUpVisible = false;
-				vm.passwordIncorrect = false;
-				}	
-			} else {
-				vm.passwordIncorrect = true;
+					vm.keyMSService.isPassPopup = false;
+					vm.keyMSService.isPopUpVisible = false;
+					vm.passwordIncorrect = false;
+				}
+				else {
+					vm.passwordIncorrect = true;
+				}
 			}
+
+			// secondaryEdit / delete
+			if(vm.keyMSService.isSecondaryEdit === true) {
+				if(vm.passwordPop === vm.tableData[parentIndex].secondaryKey[index].password) {
+					vm.title = "Edit secondary Key"
+					vm.keyMSService.isPassPopup = false;
+					vm.keyMSService.setPopupData();
+					vm.newUserData.key = vm.tableData[parentIndex].secondaryKey[index].key;
+					vm.newUserData.description = vm.tableData[parentIndex].secondaryKey[index].description;
+					vm.newUserData.activeon = vm.tableData[parentIndex].secondaryKey[index].activeon;
+					vm.newUserData.expiry = vm.tableData[parentIndex].secondaryKey[index].expiry;	
+					vm.newUserData.primaryKey = vm.tableData[parentIndex].key;
+				} else {
+					vm.passwordIncorrect = true;
+				}
+			}
+			
+			if (vm.keyMSService.isSecondaryDelete === true) {
+				if(vm.passwordPop === vm.tableData[parentIndex].secondaryKey[index].password) {
+					vm.tableData[parentIndex].secondaryKey.splice(index,1);
+					vm.keyMSService.isPassPopup = false;
+					vm.keyMSService.isPopUpVisible = false;
+					vm.passwordIncorrect = false;
+				} else {
+					vm.passwordIncorrect = true;
+				}
+			}
+
 		}
 
-		vm.deleteRow = function(index) {
+		vm.deleteRow = function(parentIndex,index) {
 			vm.keyMSService.setPopupData("passPopup");
 			vm.keyMSService.index = index;
 			vm.keyMSService.isEdit = false;
+			vm.keyMSService.isDelete = true;
+			vm.keyMSService.isSecondaryEdit = false;
+			vm.keyMSService.isSecondaryDelete = false;
+			if(parentIndex >= 0 && parentIndex !== ""){
+				vm.keyMSService.parentIndex = parentIndex;
+				vm.keyMSService.isSecondaryEdit = false;
+				vm.keyMSService.isSecondaryDelete = true;
+				vm.keyMSService.isEdit = false;
+				vm.keyMSService.isDelete = false;
+
+			}
 		}
 
-		vm.editKey = function(index) {
+		vm.editKey = function(parentIndex,index) {
 			vm.keyMSService.setPopupData("passPopup");
 			vm.keyMSService.index = index;
 			vm.keyMSService.isEdit = true;
+			vm.keyMSService.isDelete = false;
+			vm.keyMSService.isSecondaryEdit = false;
+			vm.keyMSService.isSecondaryDelete = false;
+			if(parentIndex >= 0 && parentIndex !== "") {
+				vm.keyMSService.parentIndex = parentIndex;
+				vm.keyMSService.isSecondaryEdit = true;
+				vm.keyMSService.isEdit = false;
+				vm.keyMSService.isDelete = false;
+				vm.keyMSService.isSecondaryDelete = false;
+			}
 		}
+
+		vm.poulateData = function(key) {
+			angular.forEach(keyMSService.userData, function(value, index) {
+				if(key === value.key){
+					vm.newUserData.description = value.description;
+					vm.newUserData.activeon = value.activeon;
+					vm.newUserData.expiry = value.expiry;
+				}
+			});
+		}	
 
 	})
 })()
