@@ -7,8 +7,8 @@
 			<select ng-disabled = "popupCtrl.keyMSService.isSecondaryEdit" ng-change="popupCtrl.poulateData(popupCtrl.newUserData.primaryKey)" ng-if="popupCtrl.isSecondary" ng-model="popupCtrl.newUserData.primaryKey">
 				<option ng-repeat="key in popupCtrl.tableData">{{key.key}}</option>
 			</select>
-			<input ng-if="!popupCtrl.keyMSService.isSecondary" name="description" type="text" placeholder="Description" ng-model="popupCtrl.newUserData.description" required="required" />
-			<div ng-if="!popupCtrl.keyMSService.isSecondary" class="validate" ng-show="keyForm.description.$touched && keyForm.description.$invalid">Description is required.</div>
+			<input name="description" type="text" placeholder="Description" ng-model="popupCtrl.newUserData.description" required="required" />
+			<div class="validate" ng-show="keyForm.description.$touched && keyForm.description.$invalid">Description is required.</div>
 			<datepicker  date-format="yyyy/MM/dd" date-max-limit="{{popupCtrl.newUserData.expiry}}" ng-disabled="popupCtrl.isSecondary">	
 				<input type="text" placeholder="Actives on" name="activedate" ng-disabled="popupCtrl.isSecondary" ng-model="popupCtrl.newUserData.activeon" readonly required="required" />
 			</datepicker>

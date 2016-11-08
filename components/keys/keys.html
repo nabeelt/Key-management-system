@@ -1,19 +1,20 @@
 <div ng-if="!keysCtrl.tableData.length">No Data.</div>
 <div ng-if="!keysCtrl.isSecondary && keysCtrl.tableData.length">
-  <table ng-table="tableParams" class="table">
-    <tr ng-repeat="data in keysCtrl.tableData track by $index">
+  {{$data}}
+  <table ng-table="keysCtrl.tableParams" class="table">
+    <tr ng-repeat="data in $data track by $index">
       <td title="'Key'">
       	<span class="key-text" ng-style="{'background-color': data.color}">{{data.key}}</span></td>
       <td title="'Description'">
         {{data.description}}</td>
-    	<td title="'Actives on'">
+    	<td title="'Actives on'" sortable="'activeon'">
         {{data.activeon}}</td>
-        <td title="'Expires on'">
+        <td title="'Expires on'" sortable="'expiry'">
         	{{data.expiry}}</td>
         <td title="'Edit/Delete'">
-        	<span ng-click="keysCtrl.editKey('',$index)" ng-model="edit">Edit</span>
+        	<span ng-click="keysCtrl.editKey('',data.key)" ng-model="edit">Edit</span>
         	<span>/</span>
-        	<span ng-click="keysCtrl.deleteRow('',$index)" ng-model="delete">Delete</span>
+        	<span ng-click="keysCtrl.deleteRow('',data.key)" ng-model="delete">Delete</span>
         </td>
     </tr>
   </table>
@@ -44,23 +45,3 @@
   </table>
   </div>
 </div>
-
-<!-- <table ng-if="keysCtrl.isSecondary" ng-table="tableParams" class="table">
-  <tr ng-repeat="data in keysCtrl.tableData track by $index">
-    <td title="'Key'">
-      <span class="key-text" ng-style="{'background-color': data.color}">{{data.key}}</span></td>
-    <td title="'Description'">
-      {{data.description}}</td>
-    <td title="'Actives on'">
-      {{data.activeon}}</td>
-      <td title="'Expires on'">
-        {{data.expiry}}</td>
-      <td title="'Edit/Delete'">
-        <span ng-click="keysCtrl.editKey($index)" ng-model="edit">Edit</span>
-        <span>/</span>
-        <span ng-click="keysCtrl.deleteRow($index)" ng-model="delete">Delete</span>
-      </td>
-  </tr>
-</table>
-
- -->

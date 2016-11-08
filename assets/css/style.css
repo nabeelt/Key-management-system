@@ -287,8 +287,12 @@ html,body {
 }
 
 .ng-table th.sortable.sort-asc, .ng-table th.sortable.sort-desc {
-     background-color: #1590f9 !important; 
-    text-shadow: 0 !important;
+    background-color: rgb(45, 62, 78) !important;
+    text-shadow: none !important;
+}
+
+.ng-table th.sortable.sort-asc, .ng-table th.sortable.sort-desc {
+    text-shadow: none !important;
 }
 
 .primary-text {
@@ -306,4 +310,8 @@ html,body {
 
 .secondary-table-container {
     padding-bottom: 30px;
+}
+
+.hide {
+    display: none;
 }

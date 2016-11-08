@@ -8,15 +8,23 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 		vm.newUserData = {};
 		vm.keyMSService = keyMSService;
 		vm.isSecondary = parseInt($routeParams.ID);
+		vm.keyMSService.isSecondary = vm.isSecondary;
 
 		vm.submitForm = function(){
 			keyMSService.setUserData(vm.newUserData);
 			vm.checkKeyStatus(vm.newUserData);
 			vm.closeModal();
 		}
+		
+		vm.tableData = vm.keyMSService.getUserData();
+		$scope.tableData = vm.tableData;
+		vm.tableParams = new NgTableParams({},{ counts: [], total: 1, dataset: vm.tableData});
 
-		vm.tableData = keyMSService.getUserData();
-		vm.tableParams = new NgTableParams({sorting: { activeon: "desc" } }, { dataset: vm.tableData});
+
+		$scope.$watch('tableData', function () {
+    		vm.tableParams.settings().$scope = $scope;
+    		vm.tableParams.reload(); 
+		},true);
 
 		vm.closeModal = function() {
 			keyMSService.isPopUpVisible = false;
@@ -136,7 +144,6 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 
 		vm.deleteRow = function(parentIndex,index) {
 			vm.keyMSService.setPopupData("passPopup");
-			vm.keyMSService.index = index;
 			vm.keyMSService.isEdit = false;
 			vm.keyMSService.isDelete = true;
 			vm.keyMSService.isSecondaryEdit = false;
@@ -147,13 +154,17 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 				vm.keyMSService.isSecondaryDelete = true;
 				vm.keyMSService.isEdit = false;
 				vm.keyMSService.isDelete = false;
-
+			} else {
+				angular.forEach(vm.tableData,function(value, index){
+					if(key === value.key) {
+						vm.keyMSService.index = index;
+					}
+				})
 			}
 		}
 
-		vm.editKey = function(parentIndex,index) {
+		vm.editKey = function(parentIndex,key) {
 			vm.keyMSService.setPopupData("passPopup");
-			vm.keyMSService.index = index;
 			vm.keyMSService.isEdit = true;
 			vm.keyMSService.isDelete = false;
 			vm.keyMSService.isSecondaryEdit = false;
@@ -164,6 +175,12 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 				vm.keyMSService.isEdit = false;
 				vm.keyMSService.isDelete = false;
 				vm.keyMSService.isSecondaryDelete = false;
+			} else {
+				angular.forEach(vm.tableData,function(value, index){
+					if(key === value.key) {
+						vm.keyMSService.index = index;
+					}
+				})
 			}
 		}
 

@@ -15,7 +15,7 @@ angular.module('keyMS.common-service',['ngStorage'])
     keyService.isSecondary = false;
     keyService.isSecondaryEdit = false;
     keyService.parentIndex = "";
-    keyService.isSecondaryDelete = false;
+    keyService.isSecondaryDelete = false;    
 
   	keyService.getUserData = function(){
       return keyService.userData;
