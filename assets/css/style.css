@@ -79,6 +79,7 @@ html,body {
     font-size: 20px;
     line-height: 45px;
     text-align: center;
+    padding-left: 80px;
 }
 
 .modal-wrapper {
@@ -129,12 +130,13 @@ html,body {
 
 .table-container {
     background: #fff;
-    overflow: hidden;
+    overflow-y: auto;
     float: left;
     width: 100%;
     padding: 20px;
     border-top: 1px solid rgba(155, 155, 155, 0.44);
     padding-bottom: 40px;
+    max-height: 450px;
 }
 
 .button {
@@ -148,7 +150,7 @@ html,body {
     height: 37px;
     background-color: #fff;
     color: #2b2b2b;
-    margin-left: 195px;
+    margin-left: 14%;
     padding-top: 20px;
     padding-left: 20px;
     border-bottom: 1px solid rgba(155, 155, 155, 0.44);
@@ -166,7 +168,7 @@ html,body {
 }
 
 .side-nav-wrapper {
-    width: 195px;
+    width: 14%;
     height: 100%;
     background-color: #2D3E4E;
     color: #fff;
@@ -216,10 +218,10 @@ html,body {
 
 .keys-container {
     padding-top: 100px;
-    width: 80%;
+    width: 75%;
     margin: 0 auto;
     padding-left: 20px;
-    margin-left: 13%;
+    margin-left: 16%;
 
 }
 .key-title p{
