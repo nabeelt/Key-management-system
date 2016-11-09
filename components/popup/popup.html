@@ -9,11 +9,11 @@
 			</select>
 			<input name="description" type="text" placeholder="Description" ng-model="popupCtrl.newUserData.description" required="required" />
 			<div class="validate" ng-show="keyForm.description.$touched && keyForm.description.$invalid">Description is required.</div>
-			<datepicker  date-format="yyyy/MM/dd" date-max-limit="{{popupCtrl.newUserData.expiry}}" ng-disabled="popupCtrl.isSecondary">	
+			<datepicker  date-format="yyyy MMM dd" date-max-limit="{{popupCtrl.newUserData.expiry}}" ng-disabled="popupCtrl.isSecondary">	
 				<input type="text" placeholder="Actives on" name="activedate" ng-disabled="popupCtrl.isSecondary" ng-model="popupCtrl.newUserData.activeon" readonly required="required" />
 			</datepicker>
 			<div class="validate" ng-show="keyForm.activedate.$touched && keyForm.activedate.$invalid">Date is required.</div>
-			<datepicker date-format="yyyy/MM/dd" date-min-limit="{{popupCtrl.newUserData.activeon}}" ng-disabled="popupCtrl.isSecondary">
+			<datepicker date-format="yyyy MMM dd" date-min-limit="{{popupCtrl.newUserData.activeon}}" ng-disabled="popupCtrl.isSecondary">
 				<input type="text" name="expirydate" placeholder="Expiry" ng-disabled="popupCtrl.isSecondary" ng-model="popupCtrl.newUserData.expiry" readonly required="required" />
 			</datepicker>
 			<div class="validate" ng-show="keyForm.expirydate.$touched && keyForm.expirydate.$invalid">Date is required.</div>

@@ -1,8 +1,9 @@
 <div ng-if="!keysCtrl.tableData.length">No Data.</div>
+<div ng-show="keysCtrl.tableData.length">Search : <input type="text" name="search" class="search-input" ng-model="searchKeyword"></div>
 <div ng-if="!keysCtrl.isSecondary && keysCtrl.tableData.length">
   {{$data}}
   <table ng-table="keysCtrl.tableParams" class="table">
-    <tr ng-repeat="data in $data track by $index">
+    <tr ng-repeat="data in $data | filter: searchKeyword track by $index">
       <td title="'Key'">
       	<span class="key-text" ng-style="{'background-color': data.color}">{{data.key}}</span></td>
       <td title="'Description'">
@@ -26,7 +27,7 @@
   <div class="primary-text">
      Primary key - <span ng-style="{'background-color': parentData.color}">{{keysCtrl.tableData[$index].key}}</span></div>
   <table  ng-table="tableParams" class="table">
-    <tr ng-repeat="data in parentData.secondaryKey track by $index">
+    <tr ng-repeat="data in parentData.secondaryKey | filter: searchKeyword track by $index">
       <td title="'Key'">
         <span class="key-text" ng-style="{'background-color': parentData.color}">{{data.key}}</span></td>
       <td title="'Description'">

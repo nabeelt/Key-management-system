@@ -318,3 +318,10 @@ html,body {
 .hide {
     display: none;
 }
+
+.search-input {
+    border: none;
+    border-bottom: 3px solid;
+    margin-bottom: 20px;
+    outline: none;
+}
