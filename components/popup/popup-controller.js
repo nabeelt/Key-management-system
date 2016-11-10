@@ -9,6 +9,7 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 		vm.keyMSService = keyMSService;
 		vm.isSecondary = parseInt($routeParams.ID);
 		vm.keyMSService.isSecondary = vm.isSecondary;
+		vm.keyMSService.count = $localStorage.userData.length;
 
 		vm.submitForm = function(){
 			keyMSService.setUserData(vm.newUserData);
@@ -18,8 +19,7 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 		
 		vm.tableData = vm.keyMSService.getUserData();
 		$scope.tableData = vm.tableData;
-		vm.tableParams = new NgTableParams({},{ counts: [], total: 1, dataset: vm.tableData});
-
+		vm.tableParams = new NgTableParams({page: 1,count: 5},{total: 0,dataset: vm.tableData});
 
 		$scope.$watch('tableData', function () {
     		vm.tableParams.settings().$scope = $scope;
@@ -142,7 +142,7 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 
 		}
 
-		vm.deleteRow = function(parentIndex,index) {
+		vm.deleteRow = function(parentIndex,key) {
 			vm.keyMSService.setPopupData("passPopup");
 			vm.keyMSService.isEdit = false;
 			vm.keyMSService.isDelete = true;
@@ -154,6 +154,11 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 				vm.keyMSService.isSecondaryDelete = true;
 				vm.keyMSService.isEdit = false;
 				vm.keyMSService.isDelete = false;
+				angular.forEach(vm.tableData[parentIndex].secondaryKey,function(value, index){
+					if(key === value.key) {
+						vm.keyMSService.index = index;
+					}
+				})
 			} else {
 				angular.forEach(vm.tableData,function(value, index){
 					if(key === value.key) {
@@ -175,6 +180,11 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 				vm.keyMSService.isEdit = false;
 				vm.keyMSService.isDelete = false;
 				vm.keyMSService.isSecondaryDelete = false;
+				angular.forEach(vm.tableData[parentIndex].secondaryKey,function(value, index){
+					if(key === value.key) {
+						vm.keyMSService.index = index;
+					}
+				})
 			} else {
 				angular.forEach(vm.tableData,function(value, index){
 					if(key === value.key) {

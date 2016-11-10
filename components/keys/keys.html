@@ -37,9 +37,9 @@
         <td title="'Expires on'">
           {{data.expiry}}</td>
         <td title="'Edit/Delete'">
-          <span ng-click="keysCtrl.editKey($parent.$index,$index)" ng-model="editSecondary">Edit</span>
+          <span ng-click="keysCtrl.editKey($parent.$index,data.key)">Edit</span>
           <span>/</span>
-          <span ng-click="keysCtrl.deleteRow($parent.$index,$index)" ng-model="deleteSecondary">Delete</span>
+          <span ng-click="keysCtrl.deleteRow($parent.$index,data.key)">Delete</span>
         </td>
     </tr>
 

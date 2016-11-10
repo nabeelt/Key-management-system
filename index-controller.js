@@ -9,5 +9,13 @@ angular.module('keyMS.index-controller',[])
 			vm.keyMSService.setPopupData();
 			vm.keyMSService.isSecondaryEdit = false;
 		}
+
+		vm.openMenu = function (){
+			vm.keyMSService.isMenuOpen = true;
+		}
+
+		vm.closeMenu = function(){
+			vm.keyMSService.isMenuOpen = false;
+		}
 	})
 })()

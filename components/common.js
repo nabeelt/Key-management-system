@@ -16,8 +16,12 @@ angular.module('keyMS.common-service',['ngStorage'])
     keyService.isSecondaryEdit = false;
     keyService.parentIndex = "";
     keyService.isSecondaryDelete = false;    
+    keyService.isMenuOpen = false;    
 
   	keyService.getUserData = function(){
+      if($localStorage.userData.length){
+        keyService.userData = $localStorage.userData;   
+      }
       return keyService.userData;
     }
     
@@ -33,13 +37,16 @@ angular.module('keyMS.common-service',['ngStorage'])
          keyService.userData[keyService.index].expiry = data.expiry;
          keyService.userData[keyService.index].password = data.password;
          keyService.userData[keyService.index].cnfrmpassword = data.cnfrmpassword;
+         $localStorage.userData =  keyService.userData;
       }
       else {
-        if(!data.primaryKey)
+        if(!data.primaryKey){
           keyService.userData.push(data);
+          $localStorage.userData =  keyService.userData;
+        }
       }
 
-      keyService.count = keyService.userData.length;
+      keyService.count = $localStorage.userData.length;
 
       if(data.primaryKey && !keyService.isSecondaryEdit){
         angular.forEach(keyService.userData, function(value, index) {
@@ -55,6 +62,7 @@ angular.module('keyMS.common-service',['ngStorage'])
             if(!keyService.userData[index].secondaryKey)
               keyService.userData[index].secondaryKey = [];
             keyService.userData[index].secondaryKey.push(secondaryKey);
+            $localStorage.userData =  keyService.userData;
           }
         });   
       }
@@ -62,7 +70,12 @@ angular.module('keyMS.common-service',['ngStorage'])
       if(keyService.isSecondaryEdit) {
          keyService.userData[keyService.parentIndex].secondaryKey[keyService.index].description = data.description;
          keyService.userData[keyService.parentIndex].secondaryKey[keyService.index].password = data.password;
+         $localStorage.userData =  keyService.userData;
       }
+      if(!$localStorage.userData.length) {
+        $localStorage.userData =  keyService.userData;
+      }
+
   	}
   	
     keyService.getPopupData = function(){
