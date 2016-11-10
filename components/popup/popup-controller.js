@@ -9,9 +9,6 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 		vm.keyMSService = keyMSService;
 		vm.isSecondary = parseInt($routeParams.ID);
 		vm.keyMSService.isSecondary = vm.isSecondary;
-		if($localStorage.userData.length) {	
-			vm.keyMSService.count = $localStorage.userData.length;
-		}
 
 		vm.submitForm = function(){
 			keyMSService.setUserData(vm.newUserData);

@@ -19,8 +19,10 @@ angular.module('keyMS.common-service',['ngStorage'])
     keyService.isMenuOpen = false;    
 
   	keyService.getUserData = function(){
-      if($localStorage.userData.length){
-        keyService.userData = $localStorage.userData;   
+      if($localStorage.userData){
+        keyService.userData = $localStorage.userData;
+        keyService.count = $localStorage.userData.length;
+
       }
       return keyService.userData;
     }
@@ -46,7 +48,7 @@ angular.module('keyMS.common-service',['ngStorage'])
         }
       }
 
-      keyService.count = $localStorage.userData.length;
+      keyService.count = keyService.userData.length;
 
       if(data.primaryKey && !keyService.isSecondaryEdit){
         angular.forEach(keyService.userData, function(value, index) {
