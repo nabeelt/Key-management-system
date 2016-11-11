@@ -30,13 +30,11 @@
       </div>
     </div>
     <div class="header-nav">
-      <p>Dashboard</p>
-      <p ng-if="!indexCtrl.keyMSService.isSecondary" ng-click="indexCtrl.openPopup()">Add new key +</p>
-      <p ng-if="indexCtrl.keyMSService.isSecondary" ng-click="indexCtrl.openPopup()">Add secondary key +</p>
+      <p>Welcome to key Management System</p>
     </div>
     <div class="header-nav">
-      <p>Welcome to key Management System</p>
-      <p class="count">No. of Primary keys added - {{indexCtrl.keyMSService.count}}</p>
+      <p ng-if="!indexCtrl.keyMSService.isSecondary" ng-click="indexCtrl.openPopup()">Add new key +</p>
+      <p ng-if="indexCtrl.keyMSService.isSecondary" ng-click="indexCtrl.openPopup()">Add secondary key +</p>
     </div>
     <div class="keys-container">
       <div ng-view></div>

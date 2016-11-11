@@ -18,8 +18,8 @@ angular.module('keyMS.popup-controller', ['ngTable','ngStorage'])
 		
 		vm.tableData = vm.keyMSService.getUserData();
 		$scope.tableData = vm.tableData;
-		vm.tableParams = new NgTableParams({page: 1,count: 5},{total: 0,dataset: vm.tableData});
-
+		vm.tableParams = new NgTableParams({page: 1,count: 4},{total: 0,dataset: vm.tableData});
+		
 		$scope.$watch('tableData', function () {
     		vm.tableParams.settings().$scope = $scope;
     		vm.tableParams.reload(); 

@@ -218,7 +218,7 @@ html,body {
 }
 
 .keys-container {
-    padding-top: 100px;
+    padding-top: 20px;
     width: 75%;
     margin: 0 auto;
     padding-left: 20px;
@@ -382,4 +382,23 @@ html,body {
 .menu-icon {
     display: none;
     cursor: pointer;
+}
+
+.count {
+    font-size: 12px;
+    padding-top: 20px;
+    text-align: left;
+    color: #6b6b6b;
+}
+
+.edit-delete {
+    cursor: pointer;
+}
+
+.ng-table th.sortable .sort-indicator:before {
+    border-top-color: #fff !important; 
+}
+
+.ng-table th.sortable .sort-indicator:after {
+    border-bottom-color: #fff !important; 
 }

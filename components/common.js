@@ -32,13 +32,10 @@ angular.module('keyMS.common-service',['ngStorage'])
       data.key = keyService.createRandomKey();
 
       if(keyService.isEdit){
-         // keyService.userData[keyService.index].key = data.key;
          keyService.userData[keyService.index].description = data.description;
          keyService.userData[keyService.index].activeon = data.activeon;
          keyService.userData[keyService.index].color = data.color;
          keyService.userData[keyService.index].expiry = data.expiry;
-         keyService.userData[keyService.index].password = data.password;
-         keyService.userData[keyService.index].cnfrmpassword = data.cnfrmpassword;
          $localStorage.userData =  keyService.userData;
       }
       else {
@@ -70,8 +67,7 @@ angular.module('keyMS.common-service',['ngStorage'])
       }
 
       if(keyService.isSecondaryEdit) {
-         keyService.userData[keyService.parentIndex].secondaryKey[keyService.index].description = data.description;
-         keyService.userData[keyService.parentIndex].secondaryKey[keyService.index].password = data.password;
+         keyService.userData[keyService.parentIndex].secondaryKey[keyService.index].description = data.description;;
          $localStorage.userData =  keyService.userData;
       }
       if(!$localStorage.userData.length) {
@@ -96,11 +92,8 @@ angular.module('keyMS.common-service',['ngStorage'])
       var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
       for( var i=0; i < 9; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
-
       return text;
     }
-  	
-    return keyService;
-  
+    return keyService; 
   });
 })()
