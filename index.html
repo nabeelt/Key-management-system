@@ -22,7 +22,7 @@
       <img class="menu-icon" ng-if="indexCtrl.keyMSService.isMenuOpen" src="assets/images/close-button.png" ng-click="indexCtrl.closeMenu()">
       <p class="small-heading">Main</p>
       <div class="menu" ng-class="{'mobile-menu':indexCtrl.keyMSService.isMenuOpen}">
-        <p class="menu-heading">System keys</p>
+        <p ng-click="indexCtrl.openAccordion()" class="menu-heading">System keys</p>
         <ul class="menu-lists">
           <li><a href="#primarykey/0">Primary key</a></li>
           <li><a href="#secondarykey/1">Secondary key</a></li>
@@ -31,10 +31,6 @@
     </div>
     <div class="header-nav">
       <p>Welcome to key Management System</p>
-    </div>
-    <div class="header-nav">
-      <p ng-if="!indexCtrl.keyMSService.isSecondary" ng-click="indexCtrl.openPopup()">Add new key +</p>
-      <p ng-if="indexCtrl.keyMSService.isSecondary" ng-click="indexCtrl.openPopup()">Add secondary key +</p>
     </div>
     <div class="keys-container">
       <div ng-view></div>

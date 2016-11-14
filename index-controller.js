@@ -8,6 +8,7 @@ angular.module('keyMS.index-controller',[])
 		vm.openPopup = function(param) {
 			vm.keyMSService.setPopupData();
 			vm.keyMSService.isSecondaryEdit = false;
+			vm.keyMSService.isEdit = false;
 		}
 
 		vm.openMenu = function (){
@@ -17,5 +18,11 @@ angular.module('keyMS.index-controller',[])
 		vm.closeMenu = function(){
 			vm.keyMSService.isMenuOpen = false;
 		}
+
+		vm.openAccordion = function(){
+			angular.element('.menu-lists').slideToggle();
+			angular.element('.menu-heading').toggleClass('up-arrow')
+		}
+
 	})
 })()

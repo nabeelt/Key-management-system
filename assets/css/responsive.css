@@ -53,6 +53,17 @@
 	 }
 
 	 .key-title {
+	 	padding: 19px 0;
+	 	padding-left: 10px;
+	 	width: 60%;
+	 	min-height: 48px;
+	 }
+
+	 .key-title p{
+	 	padding-left: initial;
+	 }
+
+	 .key-title .logo-key{
 	 	display: none;
 	 }
 

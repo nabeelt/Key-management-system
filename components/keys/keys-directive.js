@@ -4,7 +4,9 @@
 
 angular.module('keys-module-directive',[])
 	.component('keys', {
-		bindings :{},
+		bindings :{
+			tableHeading :"="
+		},
 		controller: 'popupController',
 		controllerAs: 'keysCtrl',
 		templateUrl: 'components/keys/keys.html'

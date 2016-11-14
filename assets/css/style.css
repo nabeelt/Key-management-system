@@ -48,6 +48,20 @@ html,body {
     text-align: left;
     line-height: 30px;
     padding-left: 20px;
+    cursor:  pointer;
+    position: relative;
+}
+
+.menu-heading::after {
+    content: '';
+    height: 20px;
+    width: 20px;
+    background-image: url('../images/menu_down_arrow.png');
+    position: absolute;
+    top: 6px;
+    right: 40px;
+    background-size: cover;
+
 }
 
 .menu {
@@ -55,8 +69,9 @@ html,body {
 }
 
 .menu-lists {
-    padding-left: 20px;
+    padding-left: 30px;
     font-size: 12px;
+    display: none;
 }
 
 .menu-lists li {
@@ -136,8 +151,7 @@ html,body {
     width: 100%;
     padding: 20px;
     border-top: 1px solid rgba(155, 155, 155, 0.44);
-    padding-bottom: 40px;
-    max-height: 450px;
+    max-height: 550px;
 }
 
 .button {
@@ -401,4 +415,33 @@ html,body {
 
 .ng-table th.sortable .sort-indicator:after {
     border-bottom-color: #fff !important; 
+}
+
+.right-justify {
+    text-align: right;
+    padding-right: 20px;
+}
+
+
+.up-arrow::after {
+    background-image: url('../images/arrow-up.png');
+}
+
+.add-btn {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-color: #ff5d5d;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 50%;
+    line-height: 50px;
+    padding: 5px;
+    top: 14px;
+    right: 9px;
+    cursor: pointer;
+}
+
+.curson-not-allowed {
+    cursor: not-allowed;
 }
