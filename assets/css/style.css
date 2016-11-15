@@ -89,6 +89,7 @@ html,body {
 
 .heading {
     padding-bottom: 30px;
+    padding-top: 40px;
 }
 
 .heading h1{
@@ -188,7 +189,6 @@ html,body {
     background-color: #2D3E4E;
     color: #fff;
     text-align: center;
-    padding-top: 50px;
     position: absolute;
     overflow: hidden;
 }
@@ -444,4 +444,9 @@ html,body {
 
 .curson-not-allowed {
     cursor: not-allowed;
+}
+
+select option {
+    -webkit-appearance: none;
+    appearance: none;
 }
