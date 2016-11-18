@@ -1,0 +1,46 @@
+<div class="bk-overlay" ng-click="popupCtrl.closeModal()"></div>
+<div class="modal-wrapper">
+  <div ng-if="!popupCtrl.keyMSService.isPassPopup" class="title">{{popupCtrl.title}}</div>
+  <div ng-if="popupCtrl.keyMSService.isPassPopup" class="title">Enter Password</div>
+  <div class="modal-content">
+    <form ng-if="!popupCtrl.keyMSService.isPassPopup" name="keyForm" ng-submit="popupCtrl.submitForm();">
+      <select name="selectOption" ng-disabled="popupCtrl.keyMSService.isSecondaryEdit" ng-change="popupCtrl.poulateData(popupCtrl.newUserData.primaryKey)"
+        ng-if="popupCtrl.isSecondary" required ng-model="popupCtrl.newUserData.primaryKey">
+				<option value='' disabled selected>Please Choose primary key</option>
+				<option ng-repeat="key in popupCtrl.tableData">{{key.key}}</option>
+			</select>
+      <div class="validate" ng-show="keyForm.selectOption.$error.required">Please select a primaty key.</div>
+      <input name="description" type="text" placeholder="Description" ng-model="popupCtrl.newUserData.description" required="required"
+      />
+      <div class="validate" ng-show="keyForm.description.$invalid">Description is required.</div>
+      <datepicker date-format="yyyy MMM dd" date-max-limit="{{popupCtrl.newUserData.expiry}}" ng-disabled="popupCtrl.isSecondary">
+        <input type="text" placeholder="Actives on" name="activedate" ng-disabled="popupCtrl.isSecondary" ng-model="popupCtrl.newUserData.activeon"
+          readonly required="required" />
+      </datepicker>
+      <div class="validate" ng-show="keyForm.activedate.$invalid">Date is required.</div>
+      <datepicker date-format="yyyy MMM dd" date-min-limit="{{popupCtrl.newUserData.activeon}}" ng-disabled="popupCtrl.isSecondary">
+        <input type="text" name="expirydate" placeholder="Expiry" ng-disabled="popupCtrl.isSecondary" ng-model="popupCtrl.newUserData.expiry"
+          readonly required="required" />
+      </datepicker>
+      <div class="validate" ng-show="keyForm.expirydate.$invalid">Date is required.</div>
+      <input ng-if="popupCtrl.keyMSService.isEdit===false && popupCtrl.keyMSService.isSecondaryEdit === false" type="password"
+        name="password" placeholder="Enter password" ng-model="popupCtrl.newUserData.password" required="required" />
+
+      <div ng-if="popupCtrl.keyMSService.isEdit===false && popupCtrl.keyMSService.isSecondaryEdit === false" class="validate" ng-show="keyForm.password.$invalid">Password is required.</div>
+
+      <input ng-if="popupCtrl.keyMSService.isEdit===false && popupCtrl.keyMSService.isSecondaryEdit === false" type="password"
+        name="cnfrmpassword" placeholder="Re-enter password" ng-model="popupCtrl.newUserData.cnfrmpassword" match="popupCtrl.newUserData.password"
+        required="required" />
+
+      <div ng-if="popupCtrl.keyMSService.isEdit===false && popupCtrl.keyMSService.isSecondaryEdit === false" class="validate" ng-show="keyForm.cnfrmpassword.$error.match">Fields do not match!</div>
+
+      <input class="button" type="submit" ng-disabled="keyForm.$invalid" ng-class="{'curson-not-allowed':keyForm.$invalid}" value="Submit">
+    </form>
+    <form ng-if="popupCtrl.keyMSService.isPassPopup" name="passForm" ng-submit="popupCtrl.submitPassForm();">
+      <input type="password" placeholder="Please enter password" name="passwordPop" ng-model="popupCtrl.passwordPop" required="required"
+      />
+      <div class="validate" ng-show="passForm.passwordPop.$touched && passForm.passwordPop.$invalid || popupCtrl.passwordIncorrect">Incorrect password.</div>
+      <input class="button" type="submit" value="Submit">
+    </form>
+  </div>
+</div>

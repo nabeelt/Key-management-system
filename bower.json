@@ -1,0 +1,24 @@
+{
+  "name": "KeyMS",
+  "description": "The web site for Key management system is a single-page app (SPA) based on AngularJS, which is designed to run from github gh-pages.",
+  "main": "gulpfile.js",
+  "authors": [
+    "nabeel"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/nabeelt/Key-management-system",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.1.1",
+    "angular": "^1.5.8",
+    "angular-datepicker": "^2.0.3",
+    "angular-validation-match": "^1.9.0",
+    "ng-table": "^2.1.0"
+  }
+}

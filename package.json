@@ -1,0 +1,39 @@
+{
+  "name": "key-management-system",
+  "version": "1.0.0",
+  "description": "The web site for Key management system is a single-page app (SPA) based on AngularJS, which is designed to run from github gh-pages.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "nodejs": "^0.0.0",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.9.0"
+  },
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "browser-sync": "^2.18.1",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-jsbeautifier": "^2.0.3",
+    "gulp-minify": "0.0.14",
+    "gulp-minify-html": "^1.0.6",
+    "nodejs": "0.0.0",
+    "require-dir": "^0.3.1",
+    "webpack": "^1.13.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabeelt/Key-management-system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nabeelt/Key-management-system/"
+  },
+  "homepage": "https://github.com/nabeelt/Key-management-system#readme"
+}
