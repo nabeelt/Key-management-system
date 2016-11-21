@@ -30,12 +30,3 @@ gulp.task('beautify', function () {
     }))
     .pipe(gulp.dest('.'));
 });
-
-
-// gulp.task('beautify:build', function () {
-//  gulp.src(paths.html.concat(paths.js))
-//   .pipe(prettify({
-//    config: '.jsbeautifyrc',
-//    mode: 'VERIFY_ONLY'
-//   }));
-// });
